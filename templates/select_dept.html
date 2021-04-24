@@ -1,0 +1,57 @@
+{% extends "base1.html" %}
+{% block content %}
+  <script>
+  function myAction_vender(){
+    document.getElementById("myForm").action = "/select_dept";
+    document.getElementById("myForm").submit();
+   }
+   function myAction_equip(){
+    document.getElementById("myForm").action = "/select_equip";
+    document.getElementById("myForm").submit();
+   }
+   
+   function myAction_Dept(){
+    document.getElementById("myForm").action = "/select_equip";
+    document.getElementById("myForm").submit();
+   }
+   </script>
+<div  style="background-color:#a8c0df;color:white;padding:50px; font-size: 20px;">
+<form id="myForm" >
+ 
+
+  <div class="container" style="overflow-y:auto">
+    <h2>Select Department for {{session_username}}</h2>
+    <p>Vender List:</p>            
+    <table class="table table-condensed ">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Department ID</th>
+          <th>Equipment Name.</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}        
+        <tr>
+          <td><input class="form-check-input" type="radio" name="deptid" id="deptid" value={{row[1]}}></td>
+          <td>{{row[1]}}</td>
+          <td>{{row[0]}}</td>
+          <td>{{row[2]}}</td>
+        </tr>
+        {% endfor %}  
+      </div>      
+      </tbody>
+    </table>
+  
+    <button class="btn successBTN" id="department" onclick="myAction_Dept()">Select Department</button><br>
+  </div>
+  </form>
+  </body>
+
+<input type="hidden" id="vender" name="venderid" value={{venderid}}> 
+<!--<input type="hidden" id="dept" name="deptid" value={{dept}}> -->
+
+
+</form>
+</div>
+{% endblock %}

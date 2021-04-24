@@ -1,0 +1,52 @@
+{% extends "base1.html" %}
+{% block content %}
+
+
+
+<body>
+
+<script>
+function myAction_vender(){
+    document.getElementById("myForm").action = "/select_dept";
+    document.getElementById("myForm").submit();
+
+var res;
+  }
+   
+</script>
+<div style="background-color:#828992;color:white;padding:50px; font-size: 20px;">
+
+<div class="container" style="overflow-y:auto">
+  <h2>Select Vender </h2>
+  <p>Vender List:</p>            
+  <table class="table table-condensed ">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Vender ID</th>
+        <th>Vnder Name</th>
+        <th>Address</th>
+        <th>Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}        
+      <tr>
+        <td><input class="form-check-input" type="radio" name="venderid" id="venderid" value={{row[1]}}></td>
+        <td>{{row[1]}}</td>
+        <td>{{row[0]}}</td>
+        <td>{{row[2]}}</td>
+        <td>9843546576</td>
+      </tr>
+      {% endfor %}  
+    </div>      
+    </tbody>
+  </table>
+
+
+
+<button  class = "btn submit-button btn-lg" type="button" id="department" onclick="myAction_vender()">Select Vender</button><br>
+</div>
+</form>
+</body>
+{% endblock %}

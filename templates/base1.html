@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+function myAction_vender(){
+  document.getElementById("myForm").action = "/select_vender";
+  document.getElementById("myForm").submit();
+}
+function myAction_dept(){
+  document.getElementById("myForm").action = "/select_dept";
+  document.getElementById("myForm").submit();
+}
+function myAction_logout(){
+  document.getElementById("myForm").action = "/logout";
+  document.getElementById("myForm").submit();
+}
+</script>
+
+<style>
+div.scrollmenu {
+  background-color: #236b8e;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: yellow;
+  text-align: center;
+  padding: 18px;
+  text-decoration: none;
+  font-size: 22px;
+}
+.submit-button {
+background-color: #c76a6a;
+color : black
+}
+
+div.scrollmenu a:hover {
+  background-color: #f77;
+}
+</style>
+</head>
+<body>
+<form id="myForm" >
+<div class="scrollmenu">
+  <a href="/">Home</a>
+  <a onclick="myAction_vender()">Calibrate</a>
+  <a href="#Vender Master">Vender Mgt</a>
+  <a href="#Equipment">Equipment List</a>
+  <a href="#Schedule">Schedule</a>
+  <a href="#History">History</a>
+  <a href="#Profile">Profile</a>  
+  <a onclick="myAction_dept()">Search</a>
+  <a href="#Work_Profile">Work Profile</a>
+
+  <a href="/logout">Logout</a>
+</div>
+
+<h2>Vender's Equipments Management</h2>
+    {% block content %}
+    {% endblock %}
+</form>
+</body>
+</html>

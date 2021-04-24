@@ -1,0 +1,29 @@
+{% extends "base1.html" %}
+{% block content %}
+  <script>
+  function myAction_vender(){
+    document.getElementById("myForm").action = "/select_dept";
+    document.getElementById("myForm").submit();
+   }
+   
+   </script>
+<div style="background-color:#a8c0df;color:white;padding:50px; font-size: 20px;">
+<form id="myForm" >
+
+  <br>Select Vender.<p>
+  Selected: {{venderid}}<p>
+  <label for="vender">Choose :</label>
+  <select id="vender" name="vender" size="10" >            
+         {% for row in data %}           
+              <option value={{row[1]}}>{{row[0]}}</option>
+         {% endfor %}            
+  
+  </select><br><br>
+  
+<input type="hidden" id="vender" name="venderid" value={{venderid}}> 
+
+<button id="department" onclick="myAction_vender()">Select Vender</button><br>
+</div>
+</form>
+
+{% endblock %}

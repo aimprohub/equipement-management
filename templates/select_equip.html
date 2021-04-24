@@ -1,0 +1,33 @@
+{% extends "base1.html" %}
+{% block content %}
+<script>
+   function myAction_equip(){
+     document.getElementById("myForm").action = "/parameter_input";
+     
+     document.getElementById("myForm").submit();
+   }
+   
+</script>
+<div  style="background-color:#a8c0df;color:white;padding:50px; font-size: 20px;">
+<form id="myForm" >
+Vender:{{venderid}}, Department:{{deptid}}
+  <br>Select Equipment.<p>
+  Selected: venderid = {{venderid}}, deptid = {{deptid}}<p>
+  <label for="equipment">Choose :</label>
+  
+  <select id="equipment" name="equipmentid" size="10" >            
+         {% for row in data %}           
+              <option value={{row[1]}}>{{row[0]}}</option>
+         {% endfor %}            
+  
+
+  </select><br><br>
+  
+<input type="hidden" id="vender" name="venderid" value={{venderid}}> 
+<input type="hidden" id="dept" name="deptid" value={{deptid}}>
+
+<button id="department" onclick="myAction_equip()">Select Equipment</button><br>
+
+</form>
+</div>
+{% endblock %}
