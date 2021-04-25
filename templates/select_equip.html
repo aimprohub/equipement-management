@@ -2,14 +2,14 @@
 {% block content %}
 <script>
    function myAction_equip(){
-     document.getElementById("myForm").action = "/parameter_input";
+     document.getElementById("myForm2").action = "/parameter_input";
      
-     document.getElementById("myForm").submit();
+     document.getElementById("myForm2").submit();
    }
    
 </script>
 <div  style="background-color:#a8c0df;color:white;padding:50px; font-size: 20px;">
-<form id="myForm" >
+<form id="myForm2" >
 Vender:{{venderid}}, Department:{{deptid}}
   <br>Select Equipment.<p>
   Selected: venderid = {{venderid}}, deptid = {{deptid}}<p>

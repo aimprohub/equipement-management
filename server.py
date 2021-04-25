@@ -19,8 +19,8 @@ mysql = MySQL(app)
 
 @app.route("/")
 def index():
-    #return render_template("index.html", message="Hello Flask!");    
-    return render_template("index_login.html", message="Hello Flask!", contacts = ['c1', 'c2', 'c3', 'c4', 'c5']);
+    return render_template("index_login.html", message="Hello Flask!");    
+    #return render_template("try1.html", message="Hello Flask!", contacts = ['c1', 'c2', 'c3', 'c4', 'c5']);
 
 #All ablut login and session. Takenfrom other site.
 @app.route('/login')
@@ -46,9 +46,9 @@ def login():
             session['role'] = account[4]
             msg = 'Logged in successfully ! Session on'
             if session['role'] in ('admin'):
-               return render_template('index_admin.html', msg = msg, session_id=session['session_id'], session_username=session['username'], roll=session['roll'])
+               return render_template('index_admin.html', msg = msg, session_id=session['session_id'], session_username=session['username'], role=session['role'])
             else:
-               return render_template('index_login.html', msg = msg, session_id=session['session_id'], session_username=session['username'], roll=session['roll'])
+               return render_template('index_login.html', msg = msg, session_id=session['session_id'], session_username=session['username'], role=session['role'])
         else:
             msg = 'Incorrect username / password !'
     return render_template('login_login.html', msg = msg)
@@ -139,16 +139,16 @@ def select_vender():
     if 'session_id' in session:  
         sessionid = session['session_id']
         session_role = session['role']
-        print ("in vender sessionid= ",sessionid)
-        print("session_Id = ",sessionid)
+        
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT name, vender_id, address FROM vender")
         data = cursor.fetchall()
         venderid = request.args.get('venderid')
+        print ("in vender id= ",venderid)
         if session_role == 'admin':
-            return render_template('select_vender.html', data=data, venderid=venderid, roll=session_role)
+            return render_template('select_vender.html', data=data, venderid=venderid, role=session_role)
         else:
-            return  render_template('select_vender.html', data=data, venderid=venderid, roll=session_role)  
+            return  render_template('select_vender.html', data=data, venderid=venderid, role=session_role)  
     else:  
         return '<p>Please login first</p>' 
     
@@ -160,6 +160,7 @@ def select_dept():
         print ("in dept sessionid= ",sessionid) 
         sel = request.args.get('dept')
         venderid = request.args.get('venderid')
+        print ("vender =",venderid)
         cursor = mysql.connection.cursor()
         #cursor.execute("SELECT equ_name, equ_parameter_id  FROM equipment")
         cursor.execute("SELECT department_name, department_id FROM department")
@@ -179,6 +180,7 @@ def select_equip():
         sessionid = session['session_id']
         sel = request.args.get('deptid')
         venderid = request.args.get('venderid')
+        print ("venderid in eq=", venderid)
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT equ_name, equ_parameter_id  FROM equipment")
         data = cursor.fetchall()
@@ -234,7 +236,7 @@ def save_reading():
      if request.method == 'POST' :
         #equipmentid = request.args.get('equipmentid')
         equipmentid = request.form['equipmentid']
-        form_values = request.form['Remarks']
+        form_values = request.form['textall']
         cursor = mysql.connection.cursor()
         cursor.execute('SELECT equ_name, equ_parameter_id FROM equipment where equ_id =%s',(equipmentid,))        
         data = cursor.fetchall()

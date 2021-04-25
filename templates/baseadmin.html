@@ -1,73 +1,48 @@
 <!DOCTYPE html>
-
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
 
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <form id="myForm">
+      <div class="scrollmenu">
+        <a onclick="myAction_vender()">Calibrate</a>
+        <a href="#Vender Master">Vender Mgt</a>
+        <a href="#Equipment">Equipment Mgt</a>
+        <a href="#User_mgt">User Mgt</a>
+        <a href="#Profile">User_activity</a>
+        <a onclick="myAction_dept()">Search</a>
+        <a href="#Reports">Reports/Certficates</a>
+        <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
+      </div>
 
-<script>
-function myAction_vender(){
-  document.getElementById("myForm").action = "/select_vender";
-  document.getElementById("myForm").submit();
-}
-function myAction_dept(){
-  document.getElementById("myForm").action = "/select_dept";
-  document.getElementById("myForm").submit();
-}
-function myAction_logout(){
-  document.getElementById("myForm").action = "/logout";
-  document.getElementById("myForm").submit();
-}
-</script>
+      <h2>Admin for Equipments Management</h2>
+      {% block content %} {% endblock %}
+    </form>
 
-<style>
-div.scrollmenu {
-  background-color: #236b8e;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-div.scrollmenu a {
-  display: inline-block;
-  color: yellow;
-  text-align: center;
-  padding: 18px;
-  text-decoration: none;
-  font-size: 22px;
-}
-
-div.scrollmenu a:hover {
-  background-color: #f77;
-}
-</style>
-</head>
-<body>
-<form id="myForm" >
-<div class="scrollmenu">
-  <a onclick="myAction_vender()">Calibrate</a>
-  <a href="#Vender Master">Vender Mgt</a>
-  <a href="#Equipment">Equipment Mgt</a>
-  <a href="#User_mgt">User Mgt</a>
-  <a href="#Profile">User_activity</a>  
-  <a onclick="myAction_dept()">Search</a>
-  <a href="#Reports">Reports/Certficates</a>
-  <a href="/login">Login</a>
-  <a href="/logout">Logout</a>
-</div>
-
-<h2>Admin for Equipments Management</h2>
-    {% block content %}
-    {% endblock %}
-</form>
-</body>
+    <script>
+      function myAction_vender() {
+        document.getElementById("myForm").action = "/select_vender";
+        document.getElementById("myForm").submit();
+      }
+      function myAction_dept() {
+        document.getElementById("myForm").action = "/select_dept";
+        document.getElementById("myForm").submit();
+      }
+      function myAction_logout() {
+        document.getElementById("myForm").action = "/logout";
+        document.getElementById("myForm").submit();
+      }
+    </script>
+  </body>
 </html>

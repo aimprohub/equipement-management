@@ -1,24 +1,15 @@
 {% extends "base1.html" %}
 {% block content %}
   <script>
-  function myAction_vender(){
-    document.getElementById("myForm").action = "/select_dept";
-    document.getElementById("myForm").submit();
-
-   }
-   function myAction_equip(){
-    document.getElementById("myForm").action = "/select_equip";
-    document.getElementById("myForm").submit();
-   }
    
    function myAction_Dept(){
-    document.getElementById("myForm").action = "/select_equip";
-    document.getElementById("myForm").submit();
+    document.getElementById("myForm1").action = "/select_equip";
+    document.getElementById("myForm1").submit();
    }
    </script>
 <div  style="background-color:#828992;color:white;padding:50px; font-size: 20px;">
-<form id="myForm" >
- 
+<form id="myForm1" >
+  
   <div class="container" style="overflow-y:auto">
     <h2>Select Department for {{session_username}}</h2>
     <p>Vender List:</p>            

@@ -15,30 +15,30 @@
 
 <script>
 function myAction_reading(){
-    document.getElementById("myForm").method="POST";
-    document.getElementById("myForm").action = "/save_reading";
-    document.getElementById("myForm").submit();
+    document.getElementById("myForm3").method="POST";
+    document.getElementById("myForm3").action = "/save_reading";
+    document.getElementById("myForm3").submit();
 }
 function show_no(){
   //document.getElementById("myForm").action = "/save_reading";
-  var x = document.getElementById("myForm").elements.length;
-  var y = document.getElementById("myForm").elements.item(4).value;
-  var z = document.getElementById("myForm").elements.namedItem("Remarks").value;
+  var x = document.getElementById("myForm3").elements.length;
+  var y = document.getElementById("myForm3").elements.item(4).value;
+  var z = document.getElementById("myForm3").elements.namedItem("Remarks").value;
   alert(x+y+z);
 }
 function getAllValues(){
-  var x = document.getElementById("myForm");
+  var x = document.getElementById("myForm3");
   var txt = "";
   var i;
-  document.getElementById("myForm").method="POST";
-  document.getElementById("myForm").action = "/save_reading";
+  document.getElementById("myForm3").method="POST";
+  document.getElementById("myForm3").action = "/save_reading";
   for (i = 0; i < x.length; i++) {
     txt = txt + x.elements[i].value + "|";
   }
   alert(txt)
   ////document.getElementById("myForm").element.namedItem("Remarks") = txt;
-  document.getElementById("Remarks").value = 'txt';
-  document.getElementById("myForm").submit();
+  document.getElementById("textall").value = txt;
+  document.getElementById("myForm3").submit();
   return txt;
 }
 </script>
@@ -47,7 +47,8 @@ function getAllValues(){
   <h3>Fillup values and observations:</h3>
   Vender:{{venderid}} Department:{{deptid}}  Equipment:{{equipmentid}}   <p></p>
   <h3>Equipment : {{equ_name}}</h3><p></p><p></p>
-  <form id ="myForm" class="form-horizontal" action="/save_reading">
+  
+  <form id ="myForm3" class="form-horizontal" action="/save_reading">
   
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Email_id of Approver:</label>
@@ -93,8 +94,8 @@ function getAllValues(){
 
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="hidden" id="myForm" name="equipmentid" value={{equipmentid}}>
-        <input type="hidden" id="myForm" name="textall" >
+        <input type="hidden" id="equipmentid" name="equipmentid" value={{equipmentid}}>
+        <input type="hidden" id="textall" name="textall" >
         
         <button id="department" onclick="myAction_reading()">Save All2</button><br>
         <button id="department" onclick="getAllValues()">Show Numb of el1</button><br>
