@@ -19,6 +19,28 @@ function myAction_reading(){
     document.getElementById("myForm").action = "/save_reading";
     document.getElementById("myForm").submit();
 }
+function show_no(){
+  //document.getElementById("myForm").action = "/save_reading";
+  var x = document.getElementById("myForm").elements.length;
+  var y = document.getElementById("myForm").elements.item(4).value;
+  var z = document.getElementById("myForm").elements.namedItem("Remarks").value;
+  alert(x+y+z);
+}
+function getAllValues(){
+  var x = document.getElementById("myForm");
+  var txt = "";
+  var i;
+  document.getElementById("myForm").method="POST";
+  document.getElementById("myForm").action = "/save_reading";
+  for (i = 0; i < x.length; i++) {
+    txt = txt + x.elements[i].value + "|";
+  }
+  alert(txt)
+  ////document.getElementById("myForm").element.namedItem("Remarks") = txt;
+  document.getElementById("Remarks").value = 'txt';
+  document.getElementById("myForm").submit();
+  return txt;
+}
 </script>
 
 <div class="container">
@@ -47,9 +69,9 @@ function myAction_reading(){
     {% endfor %}
     
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Remarks:</label>
+      <label class="control-label col-sm-2" for="myForm">Remarks:</label>
       <div class="col-sm-10">          
-        <input type="text" class="form-control" id="pwd" placeholder="Remark:" name="Remarks">
+        <input type="text" class="form-control" id="myForm" placeholder="Remark:" name="Remarks">
       </div>
     </div>
     
@@ -71,10 +93,11 @@ function myAction_reading(){
 
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="hidden" id="equipmentid" name="equipmentid" value={{equipmentid}}>
+        <input type="hidden" id="myForm" name="equipmentid" value={{equipmentid}}>
+        <input type="hidden" id="myForm" name="textall" >
         
-        
-        <button id="department" onclick="myAction_reading()">Save All</button><br>
+        <button id="department" onclick="myAction_reading()">Save All2</button><br>
+        <button id="department" onclick="getAllValues()">Show Numb of el1</button><br>
       </div>
     </div>
   </tbody>

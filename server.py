@@ -7,16 +7,20 @@ app = Flask(__name__)
 
 app.secret_key = 'your secret key'
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
+#app.config['MYSQL_HOST'] = 'localhost'
+#app.config['MYSQL_USER'] = 'root'
+#app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_HOST'] = 'aim.cvot3mbu0m9d.us-east-2.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'gismaster'
+app.config['MYSQL_PASSWORD'] = 'first#1234'
+
 app.config['MYSQL_DB'] = 'calibration'
 mysql = MySQL(app)
 
 @app.route("/")
 def index():
     #return render_template("index.html", message="Hello Flask!");    
-    return render_template("index.html", message="Hello Flask!", contacts = ['c1', 'c2', 'c3', 'c4', 'c5']);
+    return render_template("index_login.html", message="Hello Flask!", contacts = ['c1', 'c2', 'c3', 'c4', 'c5']);
 
 #All ablut login and session. Takenfrom other site.
 @app.route('/login')
@@ -230,7 +234,22 @@ def save_reading():
      if request.method == 'POST' :
         #equipmentid = request.args.get('equipmentid')
         equipmentid = request.form['equipmentid']
-        return equipmentid
+        form_values = request.form['Remarks']
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT equ_name, equ_parameter_id FROM equipment where equ_id =%s',(equipmentid,))        
+        data = cursor.fetchall()
+        for row in data:
+            equ_name = row[0]
+            equ_parameter_id = row[1]
+        
+        cursor.execute('SELECT parameter_name FROM equ_parameter_reg where equ_parameter_id =%s',(equ_parameter_id,))
+        data = cursor.fetchall()
+        for row in data:
+            parameter_name = row[0]
+        
+        print ('Parameter=', equ_parameter_id,' Name=',equ_name)
+        #return "para_name ", parameter_name," Name=",parameter_name
+        return  str(form_values)
 
 
 if __name__ == "__main__":
