@@ -1,33 +1,28 @@
-{% extends "base1.html" %}
+{% extends "base.html" %}
 {% block content %}
-<script>
-   function myAction_equip(){
-     document.getElementById("myForm2").action = "/parameter_input";
-     
-     document.getElementById("myForm2").submit();
-   }
-   
-</script>
-<div  style="background-color:#a8c0df;color:white;padding:50px; font-size: 20px;">
-<form id="myForm2" >
-Vender:{{venderid}}, Department:{{deptid}}
-  <br>Select Equipment.<p>
-  Selected: venderid = {{venderid}}, deptid = {{deptid}}<p>
-  <label for="equipment">Choose :</label>
-  
-  <select id="equipment" name="equipmentid" size="10" >            
-         {% for row in data %}           
-              <option value={{row[1]}}>{{row[0]}}</option>
-         {% endfor %}            
-  
 
-  </select><br><br>
+<div class="container">
   
-<input type="hidden" id="vender" name="venderid" value={{venderid}}> 
-<input type="hidden" id="dept" name="deptid" value={{deptid}}>
-
-<button id="department" onclick="myAction_equip()">Select Equipment</button><br>
-
-</form>
+  <div>
+    <p>Selected Data:</p>
+    <ol class="">
+      <li class="list-item">Vender: {{venderid}}</li>
+      <li class="list-item">Department: {{deptid}}</li>
+    </ol>
+  </div>
+  Select Equipment : 
+  <form id="myForm2" action = "/parameter_input">
+    <div>
+      <select class="form-select" id="equipment" multiple name="equipmentid" aria-label="multiple select example" required>
+        {% for row in data %}           
+        <option value={{row[1]}}>{{row[0]}}</option>
+        {% endfor %}  
+      </select>
+    </div>
+  
+    <input type="hidden" id="vender" name="venderid" value={{venderid}}> 
+    <input type="hidden" id="dept" name="deptid" value={{deptid}}>
+    <button class="btn btn-primary" id="department" type="submit">Select Equipment</button><br>
+  </form>
 </div>
 {% endblock %}

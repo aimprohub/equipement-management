@@ -1,10 +1,15 @@
-/* Store this code in 'style.css' file inside the 'static' folder*/
-
+body, html{
+  height: 100%;
+  background-color: #fbfbfb;
+}
 .header {
-  padding: 5px 30px;
-  width: 270px;
+  padding: 5px 120px;
+  width: 150px;
   height: 70px;
   background-color: #236b8e;
+}
+.btn{
+  border-radius: 0;
 }
 
 .border {
@@ -16,12 +21,10 @@
   background-color: #9ac0cd;
 }
 
-.btn {
+.login-btn {
   padding: 10px 40px;
   background-color: #236b8e;
   color: #ffffff;
-  font-style: oblique;
-  font-weight: bold;
   border-radius: 10px;
 }
 
@@ -50,29 +53,22 @@
   font-style: oblique;
   font-weight: bold;
 }
-.successBTN {
-  background-color: blueviolet;
-  color: black;
+.bg-nav{
+  background-color: #445c75!important;
+  color: #fff;
 }
-div.scrollmenu {
-    background-color: #236b8e;
-    overflow: auto;
-    white-space: nowrap;
-  }
-
-  div.scrollmenu a {
-    display: inline-block;
-    color: yellow;
-    text-align: center;
-    padding: 18px;
-    text-decoration: none;
-    font-size: 22px;
-  }
-  .submit-button {
-    background-color: #2a6891;
-    color: rgb(248, 242, 242);
-  }
-
-  div.scrollmenu a:hover {
-    background-color: #f77;
-  }
+a.navbar-brand,
+a.nav-link{
+  color: #fff;
+  cursor: pointer;
+}
+.w-50{
+  width: 50px!important;
+}
+.main{
+  background:#fbfbfb
+}
+table thead{
+  color: #fff;
+  background: #445c75;
+}

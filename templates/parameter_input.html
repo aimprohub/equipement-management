@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-{% extends "base1.html" %}
+{% extends "base.html" %}
 {% block content %}
 
 <script>
-function myAction_reading(){
-    document.getElementById("myForm3").method="POST";
-    document.getElementById("myForm3").action = "/save_reading";
-    document.getElementById("myForm3").submit();
-}
 function show_no(){
   //document.getElementById("myForm").action = "/save_reading";
   var x = document.getElementById("myForm3").elements.length;
@@ -30,15 +13,12 @@ function getAllValues(){
   var x = document.getElementById("myForm3");
   var txt = "";
   var i;
-  document.getElementById("myForm3").method="POST";
-  document.getElementById("myForm3").action = "/save_reading";
   for (i = 0; i < x.length; i++) {
     txt = txt + x.elements[i].value + "|";
   }
   alert(txt)
   ////document.getElementById("myForm").element.namedItem("Remarks") = txt;
   document.getElementById("textall").value = txt;
-  document.getElementById("myForm3").submit();
   return txt;
 }
 </script>
@@ -46,65 +26,56 @@ function getAllValues(){
 <div class="container">
   <h3>Fillup values and observations:</h3>
   Vender:{{venderid}} Department:{{deptid}}  Equipment:{{equipmentid}}   <p></p>
-  <h3>Equipment : {{equ_name}}</h3><p></p><p></p>
-  
-  <form id ="myForm3" class="form-horizontal" action="/save_reading">
-  
-    <div class="form-group">
+  <h3 class="mb-3">Equipment : {{equ_name}}</h3>
+  <form id ="myForm3" class="form-horizontal" action="/save_reading" method="POST">
+    <div class="row form-group">
       <label class="control-label col-sm-2" for="email">Email_id of Approver:</label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
       </div>
     </div>
-
     <tbody>
     {% for row in data %}
-
-    <div class="form-group">
+    <div class="row form-group">
       <label class="control-label col-sm-2" for="pwd">{{row}}:</label>
-      <div class="col-sm-10">          
+      <div class="col-sm-6">          
         <input type="text" class="form-control" id="pwd" placeholder="observations:" name="{{row}}">
       </div>
     </div>
 
     {% endfor %}
     
-    <div class="form-group">
+    <div class="row form-group">
       <label class="control-label col-sm-2" for="myForm">Remarks:</label>
-      <div class="col-sm-10">          
+      <div class="col-sm-6">          
         <input type="text" class="form-control" id="myForm" placeholder="Remark:" name="Remarks">
       </div>
     </div>
     
-    <div class="form-group">        
-      <class class="col-sm-offset-2 col-sm-10">
-      <div>   
+    <div class="row form-group">        
+      <div class="col-sm-6">
         <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Followed procedure as per Norms:</label>
+          <label><input type="checkbox" name="remember">  Followed procedure as per Norms</label>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember">  Verified & Approved </label>
         </div>
       </div>
     </div>
-    
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Verified & Approved:</label>
-      <div class="col-sm-10">          
-        <label><input type="checkbox" name="remember"> </label>
-      </div>
-    </div>
 
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <input type="hidden" id="equipmentid" name="equipmentid" value={{equipmentid}}>
-        <input type="hidden" id="textall" name="textall" >
-        
-        <button id="department" onclick="myAction_reading()">Save All2</button><br>
-        <button id="department" onclick="getAllValues()">Show Numb of el1</button><br>
+    <div class="form-group row">        
+      <div class="col-sm-6">
+        <div class="d-flex">
+          <div><button class="btn btn-info mr-4 " id="department" onclick="myAction_reading()">Save All</button></div>
+          <div><button class="btn btn-primary" id="department" onclick="getAllValues()">Show Numb of el1</button></div>
+        </div>
       </div>
     </div>
-  </tbody>
+    <input type="hidden" id="equipmentid" name="equipmentid" value={{equipmentid}}>
+    <input type="hidden" id="textall" name="textall" >
   </form>
 </div>
-
-</body> 
 {% endblock %}
 

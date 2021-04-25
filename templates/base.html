@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Equipment Calibration </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  </head>
+    <body>
+      <form id="myForm">
+        <!-- <div class="scrollmenu">
+          <a href="/">Home</a>
+          <a onclick="myAction_vender()">Calibrate</a>
+          <a href="#Vender Master">Vender Mgt</a>
+          <a href="#Equipment">Equipment List</a>
+          <a href="#Schedule">Schedule</a>
+          <a href="#History">History</a>
+          <a href="#Profile">Profile</a>
+          <a onclick="myAction_dept()">Search</a>
+          <a href="#Work_Profile">Work Profile</a>
+          <a href="/logout">Logout</a>
+        </div> -->
+        <nav class="navbar navbar-expand-lg bg-nav">
+          <a class="navbar-brand" href="#"><img class="logo" alt="logo" src="{{url_for('static', filename='logo.png')}}" width="50px"/> Equipment Calibration</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a id="cal" class="nav-link" onclick="myAction_vender('cal')">Calibrate</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Vender Master">Vender Mgt</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Equipment">Equipment List</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Schedule">Schedule</a></li>
+              <li class="nav-item"><a class="nav-link" href="#History">History</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Profile">Profile</a></li>
+              <li class="nav-item"><a class="nav-link" onclick="myAction_dept()">Search</a></li>
+              <li class="nav-item"><a class="nav-link" href="#Work_Profile">Work Profile</a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>         
+            </ul>
+          </div>
+        </nav>
+      </form>
+
+      <div class="container-fluid p-3">
+          <h2 class="text-center">Vender's Equipments Management</h2><hr><br>
+          {% block content %} {% endblock %}   
+      </div>
+      <script>
+        function myAction_vender(id) {
+          document.getElementById("myForm").action = "/select_vender";
+          document.getElementById("myForm").submit();
+        }
+        function myAction_dept() {
+          document.getElementById("myForm").action = "/select_dept";
+          document.getElementById("myForm").submit();
+        }
+        function myAction_logout() {
+          document.getElementById("myForm").action = "/logout";
+          document.getElementById("myForm").submit();
+        }
+      </script>
+      <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </html>
