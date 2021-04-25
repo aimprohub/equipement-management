@@ -2,57 +2,11 @@ body, html{
   height: 100%;
   background-color: #fbfbfb;
 }
-.header {
-  padding: 5px 120px;
-  width: 150px;
-  height: 70px;
-  background-color: #236b8e;
-}
+
 .btn{
   border-radius: 0;
 }
 
-.border {
-  padding: 80px 50px;
-  width: 500px;
-  height: 450px;
-  border: 1px solid #ff6b8e;
-  border-radius: 0px;
-  background-color: #9ac0cd;
-}
-
-.login-btn {
-  padding: 10px 40px;
-  background-color: #236b8e;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-.textbox {
-  padding: 10px 40px;
-  background-color: #236b8e;
-  text-color: #ffffff;
-  border-radius: 10px;
-}
-
-::placeholder {
-  color: #ffff00;
-  opacity: 1;
-  font-style: oblique;
-  font-weight: bold;
-}
-
-.word {
-  color: #fff0ff;
-  font-style: oblique;
-  font-weight: bold;
-}
-
-.bottom {
-  color: #236b8e;
-  font-style: oblique;
-  font-weight: bold;
-}
 .bg-nav{
   background-color: #445c75!important;
   color: #fff;
@@ -61,6 +15,9 @@ a.navbar-brand,
 a.nav-link{
   color: #fff;
   cursor: pointer;
+}
+.active-nav{
+  border-bottom:2px solid #68dde2;
 }
 .w-50{
   width: 50px!important;
