@@ -1,31 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-
-<script>
-function show_no(){
-  //document.getElementById("myForm").action = "/save_reading";
-  var x = document.getElementById("myForm3").elements.length;
-  var y = document.getElementById("myForm3").elements.item(4).value;
-  var z = document.getElementById("myForm3").elements.namedItem("Remarks").value;
-  alert(x+y+z);
-}
-function getAllValues(){
-  var x = document.getElementById("myForm3");
-  var txt = "";
-  var i;
-  for (i = 0; i < x.length; i++) {
-    txt = txt + x.elements[i].value + "|";
-  }
-  alert(txt)
-  ////document.getElementById("myForm").element.namedItem("Remarks") = txt;
-  document.getElementById("textall").value = txt;
-  return txt;
-}
-</script>
-
 <div class="container">
   <h3>Fillup values and observations:</h3>
-  Vender:{{venderid}} Department:{{deptid}}  Equipment:{{equipmentid}}   <p></p>
+  Vender:{{venderid}} | Department:{{deptid}} | Equipment:{{equipmentid}}   <p></p>
   <h3 class="mb-3">Equipment : {{equ_name}}</h3>
   <form id ="myForm3" class="form-horizontal" action="/save_reading" method="POST">
     
@@ -46,7 +23,7 @@ function getAllValues(){
     <div class="row form-group">
       <label class="control-label col-sm-2" for="pwd">{{row}}:</label>
       <div class="col-sm-6">          
-        <input type="text" class="form-control" id="pwd" placeholder="observations:" name="{{row}}">
+        <input type="text" class="form-control" id="pwd" placeholder="Enter {{row}}" name="{{row}}">
       </div>
     </div>
 
@@ -55,7 +32,7 @@ function getAllValues(){
     <div class="row form-group">
       <label class="control-label col-sm-2" for="myForm">Remarks:</label>
       <div class="col-sm-6">          
-        <input type="text" class="form-control" id="myForm" placeholder="Remark:" name="Remarks">
+        <input type="text" class="form-control" id="myForm" placeholder="Enter Remark" name="Remarks">
       </div>
     </div>
     
@@ -75,7 +52,7 @@ function getAllValues(){
     <div class="form-group row">        
       <div class="col-sm-6">
         <div class="d-flex">
-          <div><button class="btn btn-info mr-4 " id="department" onclick="myAction_reading()">Save All</button></div>
+          <div><button class="btn btn-success mr-4 " id="department" onclick="myAction_reading()">Save All</button></div>
           <div><button class="btn btn-primary" id="department" onclick="getAllValues()">Show Numb of el1</button></div>
         </div>
       </div>
