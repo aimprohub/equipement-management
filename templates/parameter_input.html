@@ -28,10 +28,17 @@ function getAllValues(){
   Vender:{{venderid}} Department:{{deptid}}  Equipment:{{equipmentid}}   <p></p>
   <h3 class="mb-3">Equipment : {{equ_name}}</h3>
   <form id ="myForm3" class="form-horizontal" action="/save_reading" method="POST">
+    
+    <div class="row form-group">
+      <label class="control-label col-sm-2" for="approvar">Name of Approver:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="approvarName" placeholder="Name" name="approvar_name">
+      </div>
+    </div>
     <div class="row form-group">
       <label class="control-label col-sm-2" for="email">Email_id of Approver:</label>
       <div class="col-sm-6">
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="approvar_email">
       </div>
     </div>
     <tbody>
